@@ -1,0 +1,36 @@
+/* CSS de listar.html */
+nav{
+    background-color: rgb(95, 158, 160);
+}
+
+body table{
+    margin-top: 50px;
+    caption-side: bottom;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+h1{
+    background-color: cadetblue;
+    text-align: center;
+}
+
+th{
+    background-color: black;
+    color: white;
+    width: 5cm;
+}
+
+td, th{
+    border: 2px, solid, black;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+body caption{
+    padding-top: 20px;
+    font-style: italic;
+}

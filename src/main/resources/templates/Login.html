@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Ventas de Tecnologia</title>
+    <link rel="stylesheet" type="text/css" th:href="@{../css/styleLogin.css}">
+</head>
+<body>
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                <form th:action="@{/Login}" th:object="${usuario}" method="post" id="loginform">
+                    <h2>Inicio de Sesión</h2>
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="email" th:field="*{email}" required>
+                        <label for="">Correo</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" th:field="*{password}" required>
+                        <label for="">Contraseña</label>
+                    </div>
+                    <div class="forget">
+                        <!-- th:href="@{/Registrarme/} + ${usuario.id}" -->
+                        <label for=""><input type="checkbox">Recuerdame <a class="btn btn-primary btn-xs" >¿Olvide mi contraseña?</a></label>
+                    </div>
+                    
+                    <button type="submit">Iniciar Sesion</button>
+                    <div class="registro">
+                        <p>No tengo una cuenta <a href="./RegistrarUsuario">Registrarme</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

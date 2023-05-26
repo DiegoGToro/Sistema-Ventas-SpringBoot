@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo}">Document</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{../css/styleListar.css}">
+</head>
+<body>
+    <nav th:replace = "NavBar ::nav"></nav>
+
+    <h1 th:text="${titulo}" class="text-center text-uppercase mb-3 mt-2 border border-success border-start-0 border-end-0"></h1>
+    <a th:href="@{/ProveedorRegistrar}" class="btn btn-success">Crear Producto</a>
+    <div class="d-flex justify-content-center">
+        <div class="col-8">
+            <table>
+                <caption></caption>
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">ID</th>
+                        <th style="text-align: center;">Nombre Producto</th>
+                        <th style="text-align: center;">Descripcion</th>
+                        <th style="text-align: center;">Precio</th>
+                        <th style="text-align: center;">Existencias</th>
+                        <th style="text-align: center;">Editar</th>
+                        <th style="text-align: center;">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="producto: ${producto}">
+                        <td style="text-align: center;" th:text="${producto.id}"></td>
+                        <td style="text-align: center;" th:text="${producto.nombre}"></td>
+                        <td style="text-align: center;" th:text="${producto.descripcion}"></td>
+                        <td style="text-align: center;" th:text="'$'+${producto.precio}"></td>
+                        <td style="text-align: center;" th:text="${producto.existencias}"></td>
+                        <td><a class="btn btn-primary btn-xs" th:href="@{/ProductoForm/}+${producto.id}">Editar</a></td>
+                        <td><a class="btn btn-danger btn-xs" th:href="@{/eliminarProducto/}+${producto.id}" onclick="return confirm('Esta seguro de que quiere eliminar el Producto?')">Eliminar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer th:replace = "NavBar :: footer"></footer>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</body>
+</html>
