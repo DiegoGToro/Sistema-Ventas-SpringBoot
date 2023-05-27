@@ -11,7 +11,7 @@ section{
     min-height: 100vh;
     width: 100%;
     
-    background: url('../img/background6.jpg')no-repeat;
+    background: url('../../img/background6.jpg')no-repeat;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
@@ -21,7 +21,7 @@ section{
     margin-bottom: 1em;
     position: relative;
     width: 400px;
-    height: 700px;
+    height: 800px;
     background: transparent;
     border: 2px solid rgba(255,255,255,0.5);
     border-radius: 20px;

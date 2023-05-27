@@ -12,7 +12,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Dao.IContactoInfo;
 import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Dao.IProveedorDao;
 import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Entity.Proveedor;
-import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Entity.ProveedorJoinContacto;
+import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Entity.ProveedorContacto;
 
 //Corregir todo a proveedor
 
@@ -33,17 +33,17 @@ public class ProveedorController {
         return "ProveedorListar";
     }
 
-    @GetMapping("/RegistrarProveedor")
+    @GetMapping("/ProveedorRegistrar")
     public String crear(Model model) {
-        ProveedorJoinContacto usuarioContacto = new ProveedorJoinContacto();
+        ProveedorContacto proveedor = new ProveedorContacto();
 
-        model.addAttribute("usuarioContacto", usuarioContacto);
+        model.addAttribute("proveedor", proveedor);
         model.addAttribute("button2", "Registrarme");
-        return "RegistrarProveedor";
+        return "ProveedorRegistrar";
     }
 
-    @PostMapping("/RegistrarProveedor")
-    public String guardar(ProveedorJoinContacto proveedorContacto, SessionStatus status) {
+    @PostMapping("/ProveedorRegistrar")
+    public String guardar(ProveedorContacto proveedorContacto, SessionStatus status) {
 
         proveedorDao.save(proveedorContacto.getProveedor());
         proveedorContacto.getContactoInfo().setId(proveedorContacto.getProveedor().getId());
@@ -56,7 +56,7 @@ public class ProveedorController {
         return "redirect:/ProveedorListar";
     }
 
-    @GetMapping("/RegistrarProveedor/{id}")
+    @GetMapping("/ProveedorRegistrar/{id}")
     public String editar(@PathVariable(value = "id") Long id, Model model) {
         Proveedor proveedor = null;
         System.out.println("****" + id);
@@ -70,7 +70,7 @@ public class ProveedorController {
         model.addAttribute("titulo", "Editar Proveedor");
         model.addAttribute("proveedor", proveedor);
         model.addAttribute("button", "Guardar Cambios");
-        return "RegistrarProveedor";
+        return "ProveedorRegistrar";
     }
 
     @GetMapping("/eliminarProveedor/{id}")

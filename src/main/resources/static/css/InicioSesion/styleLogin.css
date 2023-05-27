@@ -11,17 +11,14 @@ section{
     min-height: 100vh;
     width: 100%;
     
-    background: url('../img/background6.jpg')no-repeat;
+    background: url('../../img/background6.jpg')no-repeat;
     background-position: center;
     background-size: cover;
-    background-attachment: fixed;
 }
 .form-box{
-    margin-top: 1em;
-    margin-bottom: 1em;
     position: relative;
     width: 400px;
-    height: 1000px;
+    height: 450px;
     background: transparent;
     border: 2px solid rgba(255,255,255,0.5);
     border-radius: 20px;
@@ -31,14 +28,10 @@ section{
     align-items: center;
 
 }
-h2,h3{
+h2{
     font-size: 2em;
     color: #fff;
     text-align: center;
-}
-h5{
-    font-size: 2em;
-    color: #fff;
 }
 .inputbox{
     position: relative;

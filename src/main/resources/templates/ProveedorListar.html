@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="${titulo}">Document</title>
 
-    <link rel="stylesheet" type="text/css" th:href="@{../css/styleListar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{../css/CRUDs/styleListar.css}">
 </head>
 <body>
     <nav th:replace = "NavBar ::nav"></nav>
@@ -20,7 +20,6 @@
                 <thead>
                     <tr>
                         <th style="text-align: center;">ID</th>
-                        <th style="text-align: center;">Marca</th>
                         <th style="text-align: center;">Nombre Proveedor</th>
                         <th style="text-align: center;">Email</th>
                         <th style="text-align: center;">Editar</th>
@@ -30,7 +29,6 @@
                 <tbody>
                     <tr th:each="proveedor: ${proveedor}">
                         <td style="text-align: center;" th:text="${proveedor.id}"></td>
-                        <td style="text-align: center;" th:text="${proveedor.marcaNombre}"></td>
                         <td style="text-align: center;" th:text="${proveedor.proveedorNombre}"></td>
                         <td style="text-align: center;" th:text="${proveedor.email}"></td>
                         <td><a class="btn btn-primary btn-xs" th:href="@{/ProveedorRegistrar/}+${proveedor.id}">Editar</a></td>

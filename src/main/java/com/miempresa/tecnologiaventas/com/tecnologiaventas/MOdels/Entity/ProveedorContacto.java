@@ -2,13 +2,13 @@ package com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Entity;
 
 import java.io.Serializable;
 
-public class ProveedorJoinContacto implements Serializable {
+public class ProveedorContacto implements Serializable {
     private Proveedor proveedor;
-    private ContactoInfo contactoInfo;
+    private ContactoInfo contacto;
 
-    public ProveedorJoinContacto(){
+    public ProveedorContacto(){
         proveedor = null;
-        contactoInfo=null;
+        contacto=null;
     }
 
     public Proveedor getProveedor() {
@@ -20,10 +20,10 @@ public class ProveedorJoinContacto implements Serializable {
     }
 
     public ContactoInfo getContactoInfo() {
-        return contactoInfo;
+        return contacto;
     }
 
     public void setContactoInfo(ContactoInfo contactoInfo) {
-        this.contactoInfo = contactoInfo;
+        this.contacto = contactoInfo;
     }
 }

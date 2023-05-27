@@ -16,7 +16,7 @@ public class Proveedor implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    private String MarcaNombre, ProveedorNombre;
+    private String ProveedorNombre;
     private String Email, Password;
     private short CodigoRol=2;
 
@@ -27,14 +27,6 @@ public class Proveedor implements Serializable {
 
     public void setId(Long id) {
         Id = id;
-    }
-
-    public String getMarcaNombre() {
-        return MarcaNombre;
-    }
-
-    public void setMarcaNombre(String marcaNombre) {
-        MarcaNombre = marcaNombre;
     }
 
     public String getProveedorNombre() {

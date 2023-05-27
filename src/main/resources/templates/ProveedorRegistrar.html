@@ -6,20 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="${titulo}"></title>
-    <link rel="stylesheet" type="text/css" th:href="@{../css/styleRegis.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{../css/InicioSesion/styleRegisProveedor.css}">
 </head>
 
 <body>
     <section>
         <div class="form-box">
             <div class="form-value">
-                <form th:action="@{/ProveedorRegistrar}" th:object="${proveedorContacto}" method="post">
+                <form th:action="@{/ProveedorRegistrar}" th:object="${proveedor}" method="post">
                     <h2>Registrarme</h2>
-                    <div class="inputbox">
-                        <ion-icon name="mail-outline"></ion-icon>
-                        <input type="text" th:field="*{proveedor.MarcaNombre}" required>
-                        <label for="">Marca</label>
-                    </div>
                     <div class="inputbox">
                         <ion-icon name="lock-closed-outline"></ion-icon>
                         <input type="text" th:field="*{proveedor.ProveedorNombre}" required>
@@ -36,8 +31,8 @@
                         <label for="">Contraseña</label>
                     </div>
 
-                    <!-- Información de Contacto -->
-                    <h3>Info Contacto</h4>
+                    <!-- Información de Clase Contacto -->
+
                     <div class="inputbox">
                         <ion-icon name="mail-outline"></ion-icon>
                         <input type="text" th:field="*{contactoInfo.Telefono}" required>
@@ -61,13 +56,11 @@
                     
                     <div class="forget">
                         <div class="col-sm-2">
-                            <input type="submit" th:value="${button2}" class="btn btn-primary" th:field="*{usuario.id}">
+                            <input type="submit" th:value="${button2}" class="btn btn-primary" th:field="*{proveedor.id}">
                         </div>
                     </div>
-                    <div class="forget">
-                        <div class="col-sm-2">
-                            <button class="btn btn-danger"><a href="/">Regresar</a></button>
-                        </div>
+                    <div class="registro">
+                        <p><a href="./ProveedorListar">Regresar</a></p>
                     </div>
                 </form>
             </div>

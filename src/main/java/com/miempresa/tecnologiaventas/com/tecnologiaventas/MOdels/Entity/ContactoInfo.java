@@ -73,7 +73,7 @@ public class ContactoInfo implements Serializable {
         return Departamento;
     }
 
-    public void setEstado(String departamento) {
+    public void setDepartamento(String departamento) {
         Departamento = departamento;
     }
 
