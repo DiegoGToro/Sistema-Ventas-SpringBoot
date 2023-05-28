@@ -8,17 +8,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @SessionAttributes("inicio")
 public class InicioController {
-    @GetMapping("/Inicio")
+    @GetMapping("General/Inicio")
     public String inicio(Model Model)
     {
         
         System.out.println("Ingresamos al Inicio");
-        return "Inicio";
+        return "General/Inicio";
     }
-
-    // @GetMapping("/Inicio")
-    // public String MenuProveedorProveedor() {
-        
-    //     return "Login";
-    // }
 }

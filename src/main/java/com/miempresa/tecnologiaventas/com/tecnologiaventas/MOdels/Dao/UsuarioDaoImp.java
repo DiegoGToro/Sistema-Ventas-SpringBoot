@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Entity.Usuario;
 
 @Repository
-public class UsuarioDaoImp implements IUsuarioDao {
+public class UsuarioDaoImp implements InterfaceCRUD<Usuario> {
 
     @PersistenceContext
     private EntityManager em;
@@ -46,10 +46,5 @@ public class UsuarioDaoImp implements IUsuarioDao {
     public void delete(Long id) {
         Usuario usuario = findOne(id);
         em.remove(usuario);
-    }
-
-    @Override
-    public void validar(Usuario usuario) {
-        
     }
 }

@@ -9,34 +9,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Dao.IUsuarioDao;
+import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Dao.InterfaceCRUD;
 import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Entity.Usuario;
 
 @Controller
 @SessionAttributes("usuario")
 public class UsuarioController {
     @Autowired
-    private IUsuarioDao usuarioDao;
+    private InterfaceCRUD<Usuario> usuarioDao;
 
-    @GetMapping("/RegistrarUsuario")
+    @GetMapping("/InicioSesion/RegistrarUsuario")
     public String crear(Model model) {
         Usuario usuario = new Usuario();
 
         model.addAttribute("usuario", usuario);
         model.addAttribute("button2", "Registrarme");
-        return "RegistrarUsuario";
+        return "InicioSesion/RegistrarUsuario";
     }
 
-    @PostMapping("/RegistrarUsuario")
+    @PostMapping("/InicioSesion/RegistrarUsuario")
     public String guardar(Usuario usuario, SessionStatus status) {
 
         usuarioDao.save(usuario);
         
         status.setComplete();
-        return "redirect:/Login";
+        return "redirect:InicioSesion/Login";
     }
 
-    @GetMapping("/RegistrarUsuario/{id}")
+    @GetMapping("/InicioSesion/RegistrarUsuario/{id}")
     public String editar(@PathVariable(value = "id") Long id, Model model) {
         Usuario usuario = null;
         System.out.println("****" + id);
@@ -44,12 +44,12 @@ public class UsuarioController {
             usuario = usuarioDao.findOne(id);
             System.out.println("****" + id);
         } else {
-            return "redirect:/Login";
+            return "redirect:InicioSesion/Login";
         }
 
         model.addAttribute("titulo", "Editar Usuario");
         model.addAttribute("usuario", usuario);
         model.addAttribute("button", "Guardar Cambios");
-        return "RegistrarUsuario";
+        return "InicioSesion/RegistrarUsuario";
     }
 }

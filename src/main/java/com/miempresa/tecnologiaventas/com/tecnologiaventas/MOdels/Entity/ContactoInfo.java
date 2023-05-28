@@ -31,11 +31,20 @@ public class ContactoInfo implements Serializable {
     @Column(name = "departamento", nullable = false)
     private String Departamento;
 
-    // Llave foranea
-    @OneToOne()//cascade = CascadeType.ALL)
-    //@JoinColumn(name = "usuario_id")
+    @OneToOne()
     private Proveedor proveedor;
 
+    public ContactoInfo(Long id, String telefono, String direccion, String ciudad, String departamento,
+            Proveedor proveedor) {
+        Id = id;
+        Telefono = telefono;
+        Direccion = direccion;
+        Ciudad = ciudad;
+        Departamento = departamento;
+        this.proveedor = proveedor;
+    }
+    public ContactoInfo() {
+    }
 
     public Long getId() {
         return Id;
@@ -77,11 +86,11 @@ public class ContactoInfo implements Serializable {
         Departamento = departamento;
     }
 
-    public Proveedor getProveedorId() {
+    public Proveedor getProveedor() {
         return proveedor;
     }
 
-    public void setProveedorId(Proveedor proveedor) {
+    public void setProveedor(Proveedor proveedor) {
         this.proveedor = proveedor;
     }
 }

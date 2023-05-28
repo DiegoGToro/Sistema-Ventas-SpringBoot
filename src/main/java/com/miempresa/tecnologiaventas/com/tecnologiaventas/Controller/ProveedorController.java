@@ -9,76 +9,76 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Dao.IContactoInfo;
-import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Dao.IProveedorDao;
+import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Dao.InterfaceCRUD;
+import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Entity.ContactoInfo;
 import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Entity.Proveedor;
-import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Entity.ProveedorContacto;
-
-//Corregir todo a proveedor
 
 @Controller
 @SessionAttributes("proveedor")
 public class ProveedorController {
     @Autowired
-    private IProveedorDao proveedorDao;
-    
-    @Autowired 
-    private IContactoInfo contactoDao;
+    private InterfaceCRUD<Proveedor> proveedorDao;
 
-    @GetMapping("/ProveedorListar")
-    public String listar(Model model){
+    @Autowired
+    private InterfaceCRUD<ContactoInfo> contactoDao;
+
+    @GetMapping("CRUDs/ProveedorListar")
+    public String listar(Model model) {
         model.addAttribute("titulo", "Listado de Proveedores");
-        model.addAttribute("proveedor", proveedorDao.findAll());
+        model.addAttribute("proveedor", contactoDao.findAll());
 
-        return "ProveedorListar";
+        return "CRUDs/ProveedorListar";
     }
 
-    @GetMapping("/ProveedorRegistrar")
+    @GetMapping("/InicioSesion/ProveedorRegistrar")
     public String crear(Model model) {
-        ProveedorContacto proveedor = new ProveedorContacto();
+        ContactoInfo proveedor = new ContactoInfo();
 
         model.addAttribute("proveedor", proveedor);
         model.addAttribute("button2", "Registrarme");
-        return "ProveedorRegistrar";
+        return "CRUDs/ProveedorRegistrar";
     }
 
-    @PostMapping("/ProveedorRegistrar")
-    public String guardar(ProveedorContacto proveedorContacto, SessionStatus status) {
+    @PostMapping("/CRUDs/ProveedorRegistrar")
+    public String guardar(ContactoInfo contactoInfo, SessionStatus status) {
+        Proveedor proveedor = new Proveedor();
+        proveedor.setId(contactoInfo.getId());
+        proveedor.setProveedorNombre(contactoInfo.getProveedor().getProveedorNombre());
+        System.out.println("Correo Guardado : " + contactoInfo.getProveedor().getEmail());
+        proveedor.setEmail(contactoInfo.getProveedor().getEmail());
+        proveedor.setPassword(contactoInfo.getProveedor().getPassword());
 
-        proveedorDao.save(proveedorContacto.getProveedor());
-        proveedorContacto.getContactoInfo().setId(proveedorContacto.getProveedor().getId());
-        proveedorContacto.getContactoInfo().setProveedorId(proveedorContacto.getProveedor());
-        contactoDao.save(proveedorContacto.getContactoInfo());
-
-        System.out.println(proveedorContacto.getContactoInfo().getDepartamento());
+        contactoInfo.setProveedor(proveedor);
+        proveedorDao.save(proveedor);
+        contactoDao.save(contactoInfo);
 
         status.setComplete();
-        return "redirect:/ProveedorListar";
+        return "redirect:/CRUDs/ProveedorListar";
     }
 
-    @GetMapping("/ProveedorRegistrar/{id}")
+    @GetMapping("/InicioSesion/ProveedorRegistrar/{id}")
     public String editar(@PathVariable(value = "id") Long id, Model model) {
-        Proveedor proveedor = null;
+        ContactoInfo proveedor = null;
         System.out.println("****" + id);
         if (id > 0) {
-            proveedor = proveedorDao.findOne(id);
+            proveedor = contactoDao.findOne(id);
             System.out.println("****" + id);
         } else {
-            return "redirect:/ProveedorListar";
+            return "redirect:/CRUDs/ProveedorListar";
         }
 
         model.addAttribute("titulo", "Editar Proveedor");
         model.addAttribute("proveedor", proveedor);
-        model.addAttribute("button", "Guardar Cambios");
-        return "ProveedorRegistrar";
+        model.addAttribute("button2", "Guardar Cambios");
+        return "InicioSesion/ProveedorRegistrar";
     }
 
-    @GetMapping("/eliminarProveedor/{id}")
-    public String eliminar(@PathVariable(value = "id") Long id){
-        if (id > 0) 
+    @GetMapping("/CRUDs/eliminarProveedor/{id}")
+    public String eliminar(@PathVariable(value = "id") Long id) {
+        if (id > 0)
             proveedorDao.delete(id);
-            System.out.println("Ingrese al Eliminar Proveedor" + id);
-        
-        return "redirect:/ProveedorListar";
+        System.out.println("Ingrese al Eliminar Proveedor" + id);
+
+        return "redirect:/CRUDs/ProveedorListar";
     }
 }

@@ -21,6 +21,20 @@ public class Usuario implements Serializable {
     private Long Telefono;
     private byte CodigoRol;
 
+    public Usuario() {
+    }
+
+    public Usuario(Long id, String nombre, String apellido, String email, String password, Long telefono,
+            byte codigoRol) {
+        Id = id;
+        Nombre = nombre;
+        Apellido = apellido;
+        Email = email;
+        Password = password;
+        Telefono = telefono;
+        CodigoRol = codigoRol;
+    }
+
     public Long getId() {
         return Id;
     }

@@ -9,24 +9,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Dao.IProductoDao;
+import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Dao.InterfaceCRUD;
 import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Entity.Producto;
 
 @Controller
 @SessionAttributes("producto")
 public class ProductoController {
     @Autowired
-    private IProductoDao productoDao;
+    private InterfaceCRUD<Producto> productoDao;
 
-    @GetMapping("/ProductoListar")
+    @GetMapping("CRUDs/ProductoListar")
     public String listar(Model model) {
         model.addAttribute("titulo", "Listado de Mis Productos");
         model.addAttribute("producto", productoDao.findAll());
 
-        return "ProductoListar";
+        return "CRUDs/ProductoListar";
     }
 
-    @GetMapping("/ProductoForm")
+    @GetMapping("/CRUDs/ProductoForm")
     public String crear(Model model) {
         Producto producto = new Producto();
         model.addAttribute("titulo", "Formulario de Productos");
@@ -34,18 +34,18 @@ public class ProductoController {
         model.addAttribute("producto", producto);
         model.addAttribute("button", "Crear Productos");
 
-        return "ProductoForm";
+        return "CRUDs/ProductoForm";
     }
 
-    @PostMapping("/ProductoForm")
+    @PostMapping("/CRUDs/ProductoForm")
     public String guardar(Producto producto, SessionStatus status) {
         System.out.println("Guardando Producto");
         productoDao.save(producto);
         status.setComplete();
-        return "redirect:/ProductoListar";
+        return "redirect:/CRUDs/ProductoListar";
     }
 
-    @GetMapping("/ProductoForm/{id}")
+    @GetMapping("/CRUDs/ProductoForm/{id}")
     public String editar(@PathVariable(value = "id") Long id, Model model) {
         Producto producto = null;
         System.out.println("****" + id);
@@ -53,7 +53,7 @@ public class ProductoController {
             producto = productoDao.findOne(id);
             System.out.println("****" + id);
         } else {
-            return "redirect:/ProductoListar";
+            return "redirect:/CRUDs/ProductoListar";
         }
 
         model.addAttribute("titulo", "Editar Producto");
@@ -62,15 +62,15 @@ public class ProductoController {
         model.addAttribute("producto", producto);
         model.addAttribute("button", "Guardar Cambios");
 
-        return "ProductoForm";
+        return "CRUDs/ProductoForm";
     }
 
-    @GetMapping("/eliminarProducto/{id}")
+    @GetMapping("/CRUDs/eliminarProducto/{id}")
     public String eliminar(@PathVariable(value = "id") Long id) {
         if (id > 0)
             productoDao.delete(id);
         System.out.println("Ingrese al Eliminar Usuario" + id);
 
-        return "redirect:/ProductoListar";
+        return "redirect:/CRUDs/ProductoListar";
     }
 }

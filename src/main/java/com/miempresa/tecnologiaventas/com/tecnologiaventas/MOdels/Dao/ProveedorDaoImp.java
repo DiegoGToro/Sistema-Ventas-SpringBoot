@@ -11,7 +11,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
 @Repository
-public class ProveedorDaoImp implements IProveedorDao {
+public class ProveedorDaoImp implements InterfaceCRUD<Proveedor> {
 
     @PersistenceContext
     private EntityManager em;

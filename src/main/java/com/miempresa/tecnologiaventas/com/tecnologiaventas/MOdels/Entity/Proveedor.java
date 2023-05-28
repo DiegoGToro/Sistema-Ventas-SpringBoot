@@ -1,11 +1,14 @@
 package com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
@@ -18,8 +21,24 @@ public class Proveedor implements Serializable {
 
     private String ProveedorNombre;
     private String Email, Password;
-    private short CodigoRol=2;
 
+    @OneToOne(mappedBy = "proveedor")
+    private ContactoInfo contactoInfo;
+
+    @OneToMany(mappedBy = "proveedor")
+    private List<Producto> productos;
+    
+    public Proveedor() {
+    }
+
+    public Proveedor(Long id, String proveedorNombre, String email, String password, List<Producto> productos, ContactoInfo contactoInfo) {
+        Id = id;
+        ProveedorNombre = proveedorNombre;
+        Email = email;
+        Password = password;
+        this.productos = productos;
+        this.contactoInfo = contactoInfo;
+    }
 
     public Long getId() {
         return Id;
@@ -53,11 +72,19 @@ public class Proveedor implements Serializable {
         Password = password;
     }
 
-    public short getCodigoRol() {
-        return CodigoRol;
+    public List<Producto> getProductos() {
+        return productos;
     }
 
-    public void setCodigoRol(short codigoRol) {
-        CodigoRol = codigoRol;
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
+    }
+
+    public ContactoInfo getContactoInfo() {
+        return contactoInfo;
+    }
+
+    public void setContactoInfo(ContactoInfo contactoInfo) {
+        this.contactoInfo = contactoInfo;
     }
 }

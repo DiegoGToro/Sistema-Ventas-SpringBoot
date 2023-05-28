@@ -9,39 +9,32 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Dao.InterfaceCRUD;
 import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Entity.Proveedor;
 import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Entity.Usuario;
-import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Dao.IProveedorDao;
-import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Dao.IUsuarioDao;
 
 @Controller
 @SessionAttributes("login")
 public class LoginController {
 
     @Autowired
-    private IUsuarioDao usuarioDao;
+    private InterfaceCRUD<Usuario> usuarioDao;
 
     @Autowired
-    private IProveedorDao proveedorDao;
+    private InterfaceCRUD<Proveedor> proveedorDao;
 
-    // @GetMapping("/")
-    // public ModelAndView home() {
-    // ModelAndView modelAndView = new ModelAndView("Login");
-    // return modelAndView;
-    // }
-
-    @GetMapping("/Login")
+    @GetMapping("/")
     public String EnviaAtributo(Model model) {
 
         model.addAttribute("usuario", new Usuario());
 
-        return "Login";
+        return "InicioSesion/Login";
     }
 
-    @PostMapping("/Login")
+    @PostMapping("Login")
     public String Validar(Usuario usuario) {
         List<Usuario> listUsuarios = usuarioDao.findAll();
-        String direccion = "Login";
+        String direccion = "InicioSesion/Login";
         List<Proveedor> listProveedor = proveedorDao.findAll();
 
         System.out.println("Valores de usuario ingresado " + usuario.getEmail() + " -> " + usuario.getPassword());
@@ -52,20 +45,23 @@ public class LoginController {
                 System.out.println("Valide Usuario: " + listUsuarios.get(i).getEmail() + " -> "
                         + listUsuarios.get(i).getPassword());
                 if (listUsuarios.get(i).getCodigoRol() == 1) { // Administrador
-                    direccion = "redirect:Inicio";
+                    direccion = "redirect:General/Inicio";
+                    return direccion;
                 }
                 if (listUsuarios.get(i).getCodigoRol() == 2) { // Usuario
-                    direccion = "redirect:Ventas";
+                    direccion = "redirect:CRUDs/VentaForm";
+                    return direccion;
                 }
                 System.out.println("Valido el Usuario");
             }
         }
 
-        if (direccion.equals("Login")) {
+        if (direccion.equals("InicioSesion/Login")) {
             for (int i = 0; i < listProveedor.size(); i++) { // Proveedor
                 if (listProveedor.get(i).getEmail().equals(usuario.getEmail())
                         && listProveedor.get(i).getPassword().equals(usuario.getPassword())) {
-                    direccion = "redirect:ProductoListar";
+                    direccion = "redirect:CRUDs/ProductoListar";
+                    return direccion;
                 }
             }
         }

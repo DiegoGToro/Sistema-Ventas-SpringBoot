@@ -11,7 +11,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
 @Repository
-public class ContactoInfoImp implements IContactoInfo{
+public class ContactoInfoImp implements InterfaceCRUD<ContactoInfo>{
 
     @PersistenceContext
     private EntityManager em;

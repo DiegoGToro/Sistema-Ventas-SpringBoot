@@ -5,6 +5,7 @@ import java.io.Serializable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 // Producto: Un producto representa un artículo que se vende en el local de tecnología. Tiene un nombre, una descripción, un precio de venta, una cantidad en stock y un proveedor.
@@ -18,8 +19,20 @@ public class Producto implements Serializable  {
     private Long Precio;
     private int Existencias;
 
-    // @ManyToMany
-    // private Proveedor proveedor;
+    @ManyToOne()
+    private Proveedor proveedor;
+    
+    public Producto() {
+    }
+
+    public Producto(Long id, String nombre, String descripcion, Long precio, int existencias, Proveedor proveedor) {
+        Id = id;
+        Nombre = nombre;
+        Descripcion = descripcion;
+        Precio = precio;
+        Existencias = existencias;
+        this.proveedor = proveedor;
+    }
 
     public Long getId() {
         return Id;
@@ -59,5 +72,13 @@ public class Producto implements Serializable  {
 
     public void setExistencias(int existencias) {
         Existencias = existencias;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
     }
 }

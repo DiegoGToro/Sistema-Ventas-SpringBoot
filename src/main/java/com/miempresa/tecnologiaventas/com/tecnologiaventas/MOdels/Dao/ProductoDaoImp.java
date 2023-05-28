@@ -11,7 +11,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
 @Repository
-public class ProductoDaoImp implements IProductoDao {
+public class ProductoDaoImp implements InterfaceCRUD<Producto> {
     @PersistenceContext
     private EntityManager em;
 
