@@ -19,15 +19,15 @@ public class ProductoController {
     private IProductoDao productoDao;
 
     @GetMapping("/ProductoListar")
-    public String listar(Model model){
-        model.addAttribute("titulo", "Listado de Productos");
+    public String listar(Model model) {
+        model.addAttribute("titulo", "Listado de Mis Productos");
         model.addAttribute("producto", productoDao.findAll());
 
         return "ProductoListar";
     }
 
     @GetMapping("/ProductoForm")
-    public String crear(Model model){
+    public String crear(Model model) {
         Producto producto = new Producto();
         model.addAttribute("titulo", "Formulario de Productos");
         model.addAttribute("titulo", "Formulario Para Registrar Producto");
@@ -36,9 +36,9 @@ public class ProductoController {
 
         return "ProductoForm";
     }
-    
+
     @PostMapping("/ProductoForm")
-    public String guardar(Producto producto, SessionStatus status){
+    public String guardar(Producto producto, SessionStatus status) {
         System.out.println("Guardando Producto");
         productoDao.save(producto);
         status.setComplete();
@@ -46,31 +46,31 @@ public class ProductoController {
     }
 
     @GetMapping("/ProductoForm/{id}")
-    public String editar(@PathVariable(value = "id") Long id, Model model){
+    public String editar(@PathVariable(value = "id") Long id, Model model) {
         Producto producto = null;
         System.out.println("****" + id);
         if (id > 0) {
             producto = productoDao.findOne(id);
-            System.out.println("****"+id);
+            System.out.println("****" + id);
         } else {
             return "redirect:/ProductoListar";
         }
 
         model.addAttribute("titulo", "Editar Producto");
-        
+
         model.addAttribute("titulo", "Editar Producto");
         model.addAttribute("producto", producto);
         model.addAttribute("button", "Guardar Cambios");
 
         return "ProductoForm";
     }
-    
+
     @GetMapping("/eliminarProducto/{id}")
-    public String eliminar(@PathVariable(value = "id") Long id){
-        if (id > 0) 
+    public String eliminar(@PathVariable(value = "id") Long id) {
+        if (id > 0)
             productoDao.delete(id);
-            System.out.println("Ingrese al Eliminar Usuario" + id);
-        
+        System.out.println("Ingrese al Eliminar Usuario" + id);
+
         return "redirect:/ProductoListar";
     }
 }
