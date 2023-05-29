@@ -38,7 +38,7 @@
                         <td style="text-align: center;" th:text="${usuario.password}"></td>
                         <td style="text-align: center;" th:text="${usuario.telefono}"></td>
                         <td><a class="btn btn-primary btn-xs" th:href="@{/CRUDs/UsuarioForm/}+${usuario.id}">Editar</a></td>
-                        <td><a class="btn btn-danger btn-xs" th:href="@{/CRUDs/eliminarProducto/}+${usuario.id}" onclick="return confirm('Esta seguro de que quiere eliminar el Producto?')">Eliminar</a></td>
+                        <td><a class="btn btn-danger btn-xs" th:href="@{/CRUDs/eliminarUsuario/}+${usuario.id}" onclick="return confirm('Esta seguro de que quiere eliminar el Producto?')">Eliminar</a></td>
                     </tr>
                 </tbody>
             </table>

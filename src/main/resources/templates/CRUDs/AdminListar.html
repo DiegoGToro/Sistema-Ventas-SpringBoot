@@ -1,12 +1,53 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title th:text="${titulo}">Document</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{../css/CRUDs/styleListar.css}">
 </head>
 <body>
-    
+    <nav th:insert = "General/NavBar ::nav"></nav>
+
+    <h1 th:text="${titulo}" class="text-center text-uppercase mb-3 mt-2 border border-success border-start-0 border-end-0"></h1>
+    <a th:href="@{/CRUDs/AdminForm}" class="btn btn-success">Crear Administrador</a>
+    <div class="d-flex justify-content-center">
+        <div class="col-8">
+            <table>
+                <caption></caption>
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">ID</th>
+                        <th style="text-align: center;">Nombre </th>
+                        <th style="text-align: center;">Apellido</th>
+                        <th style="text-align: center;">Email</th>
+                        <th style="text-align: center;">Password</th>
+                        <th style="text-align: center;">Telefono</th>
+                        <th style="text-align: center;">Editar</th>
+                        <th style="text-align: center;">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="administrador: ${administrador}">
+                        <td style="text-align: center;" th:text="${administrador.id}"></td>
+                        <td style="text-align: center;" th:text="${administrador.nombre}"></td>
+                        <td style="text-align: center;" th:text="${administrador.apellido}"></td>
+                        <td style="text-align: center;" th:text="${administrador.email}"></td>
+                        <td style="text-align: center;" th:text="${administrador.password}"></td>
+                        <td style="text-align: center;" th:text="${administrador.telefono}"></td>
+                        <td><a class="btn btn-primary btn-xs" th:href="@{/CRUDs/AdminForm/}+${administrador.id}">Editar</a></td>
+                        <td><a class="btn btn-danger btn-xs" th:href="@{/CRUDs/eliminaradministrador/}+${administrador.id}" onclick="return confirm('Esta seguro de que quiere eliminar el Producto?')">Eliminar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer th:insert = "General/NavBar :: footer"></footer>1
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </body>
 </html>
