@@ -27,13 +27,13 @@ public class UsuarioController {
         return "InicioSesion/RegistrarUsuario";
     }
 
-    @PostMapping("/InicioSesion/RegistrarUsuario")
+    @PostMapping("InicioSesion/RegistrarUsuario")
     public String guardar(Usuario usuario, SessionStatus status) {
 
         usuarioDao.save(usuario);
         
         status.setComplete();
-        return "redirect:InicioSesion/Login";
+        return "/InicioSesion/Login";
     }
 
     @GetMapping("/InicioSesion/RegistrarUsuario/{id}")

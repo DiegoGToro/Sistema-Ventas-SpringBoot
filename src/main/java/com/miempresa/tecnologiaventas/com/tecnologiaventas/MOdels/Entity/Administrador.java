@@ -1,19 +1,17 @@
 package com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.Id;
 
 @Entity
-@Table(name = "usuarios", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
-public class Usuario implements Serializable {
+@Table(name = "administradores", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+public class Administrador implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
@@ -22,13 +20,10 @@ public class Usuario implements Serializable {
     private String Email, Password;
     private Long Telefono;
 
-    @OneToMany(mappedBy = "usuario")
-    private List<Orden> ordenes;
-
-    public Usuario() {
+    public Administrador() {
     }
 
-    public Usuario(Long id, String nombre, String apellido, String email, String password, Long telefono) {
+    public Administrador(Long id, String nombre, String apellido, String email, String password, Long telefono) {
         Id = id;
         Nombre = nombre;
         Apellido = apellido;

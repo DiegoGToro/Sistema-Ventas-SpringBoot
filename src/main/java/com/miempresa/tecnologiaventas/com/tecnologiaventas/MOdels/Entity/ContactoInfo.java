@@ -31,7 +31,7 @@ public class ContactoInfo implements Serializable {
     @Column(name = "departamento", nullable = false)
     private String Departamento;
 
-    @OneToOne()
+    @OneToOne
     private Proveedor proveedor;
 
     public ContactoInfo(Long id, String telefono, String direccion, String ciudad, String departamento,

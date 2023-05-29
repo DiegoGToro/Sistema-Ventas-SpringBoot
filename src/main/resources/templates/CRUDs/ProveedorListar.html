@@ -31,14 +31,14 @@
                 </thead>
                 <tbody>
                     <tr th:each="item : ${proveedor}">
-                        <td style="text-align: center;" th:text="${proveedor.id}"></td>
-                        <td style="text-align: center;" th:text="${proveedor.proveedorNombre}"></td>
-                        <td style="text-align: center;" th:text="${proveedor.email}"></td>
-                        <td style="text-align: center;" th:text="${telefono}"></td>
-                        <td style="text-align: center;" th:text="${direccion}"></td>
-                        <td style="text-align: center;" th:text="${ciudad}"></td>
-                        <td><a class="btn btn-primary btn-xs" th:href="@{/InicioSesion/ProveedorRegistrar/}+${id}">Editar</a></td>
-                        <td><a class="btn btn-danger btn-xs" th:href="@{/CRUDs/eliminarProveedor/}+${id}" onclick="return confirm('Esta seguro de que quiere eliminar el Proveedor?')">Eliminar</a></td>
+                        <td style="text-align: center;" th:text="${item.proveedor.id}"></td>
+                        <td style="text-align: center;" th:text="${item.proveedor.ProveedorNombre}"></td>
+                        <td style="text-align: center;" th:text="${item.proveedor.Email}"></td>
+                        <td style="text-align: center;" th:text="${item.telefono}"></td>
+                        <td style="text-align: center;" th:text="${item.direccion}"></td>
+                        <td style="text-align: center;" th:text="${item.ciudad}"></td>
+                        <td><a class="btn btn-primary btn-xs" th:href="@{/InicioSesion/ProveedorRegistrar/}+${item.proveedor.id}">Editar</a></td>
+                        <td><a class="btn btn-danger btn-xs" th:href="@{/CRUDs/eliminarProveedor/}+${item.proveedor.id}" onclick="return confirm('Esta seguro de que quiere eliminar el Proveedor?')">Eliminar</a></td>
                     </tr>
                 </tbody>
             </table>

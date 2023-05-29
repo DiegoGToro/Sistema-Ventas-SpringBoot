@@ -1,0 +1,40 @@
+body {
+    background-image: url('https://www.istockphoto.com/es/foto/estudio-de-televisi%C3%B3n-fondo-con-luces-de-escenario-y-azul-gm495758354-78169473');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button-container .button-wrapper {
+    margin: 0 5px;
+}
+
+.regresar{
+    font-size: 1.5em;
+    color: #ff0000;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+.regresar p a{
+    text-decoration: none;
+    color: #020000;
+    font-weight: 600;
+}
+.registro p a:hover{
+    text-decoration: underline;
+}

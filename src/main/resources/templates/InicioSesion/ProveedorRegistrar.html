@@ -9,27 +9,25 @@
     <link rel="stylesheet" type="text/css" th:href="@{../css/InicioSesion/styleRegisProveedor.css}">
 </head>
 
-      
-
 <body>
     <section>
         <div class="form-box">
             <div class="form-value">
-                <form th:action="@{/ProveedorRegistrar}" th:object="${proveedor}" method="post">
+                <form th:action="@{/InicioSesion/ProveedorRegistrar}" th:object="${contacto}" method="post">
                     <h2>Registrarme</h2>
                     <div class="inputbox">
                         <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="text" th:field="*{proveedor.ProveedorNombre}" required>
+                        <input type="text" th:field="*{contacto.proveedor.ProveedorNombre}" required>
                         <label for="">Nombre del Proveedor</label>
                     </div>
                     <div class="inputbox">
                         <ion-icon name="mail-outline"></ion-icon>
-                        <input type="email" th:field="*{proveedor.Email}" required>
+                        <input type="email" th:field="*{contacto.proveedor.Email}" required>
                         <label for="">Correo</label>
                     </div>
                     <div class="inputbox">
                         <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="password" th:field="*{proveedor.Password}" required>
+                        <input type="password" th:field="*{contacto.proveedor.Password}" required>
                         <label for="">Contraseña</label>
                     </div>
 
@@ -37,22 +35,22 @@
 
                     <div class="inputbox">
                         <ion-icon name="mail-outline"></ion-icon>
-                        <input type="text" th:field="*{Telefono}" required>
+                        <input type="text" th:field="*{contacto.Telefono}" required>
                         <label for="">Telefono</label>
                     </div>
                     <div class="inputbox">
                         <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="text" th:field="*{Direccion}" required>
+                        <input type="text" th:field="*{contacto.Direccion}" required>
                         <label for="">Direccion</label>
                     </div>
                     <div class="inputbox">
                         <ion-icon name="mail-outline"></ion-icon>
-                        <input type="text" th:field="*{Ciudad}" required>
+                        <input type="text" th:field="*{contacto.Ciudad}" required>
                         <label for="">Ciudad</label>
                     </div>
                     <div class="inputbox">
                         <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="text" th:field="*{Departamento}" required>
+                        <input type="text" th:field="*{contacto.Departamento}" required>
                         <label for="">Departamento</label>
                     </div>
                     
@@ -62,7 +60,7 @@
                         </div>
                     </div>
                     <div class="registro">
-                        <p><a href="./ProveedorListar">Regresar</a></p>
+                        <p><a href="../CRUDs/ProveedorListar.html">Regresar</a></p>
                     </div>
                 </form>
             </div>

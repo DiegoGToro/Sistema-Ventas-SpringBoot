@@ -34,12 +34,12 @@ public class ProveedorController {
     public String crear(Model model) {
         ContactoInfo proveedor = new ContactoInfo();
 
-        model.addAttribute("proveedor", proveedor);
+        model.addAttribute("contacto", proveedor);
         model.addAttribute("button2", "Registrarme");
         return "CRUDs/ProveedorRegistrar";
     }
 
-    @PostMapping("/CRUDs/ProveedorRegistrar")
+    @PostMapping("/InicioSesion/ProveedorRegistrar")
     public String guardar(ContactoInfo contactoInfo, SessionStatus status) {
         Proveedor proveedor = new Proveedor();
         proveedor.setId(contactoInfo.getId());
@@ -70,13 +70,15 @@ public class ProveedorController {
         model.addAttribute("titulo", "Editar Proveedor");
         model.addAttribute("proveedor", proveedor);
         model.addAttribute("button2", "Guardar Cambios");
-        return "InicioSesion/ProveedorRegistrar";
+        return "/InicioSesion/ProveedorRegistrar";
     }
 
     @GetMapping("/CRUDs/eliminarProveedor/{id}")
     public String eliminar(@PathVariable(value = "id") Long id) {
-        if (id > 0)
+        if (id > 0){
+            contactoDao.delete(id);
             proveedorDao.delete(id);
+        }
         System.out.println("Ingrese al Eliminar Proveedor" + id);
 
         return "redirect:/CRUDs/ProveedorListar";

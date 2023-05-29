@@ -7,50 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina Principal</title>
     <link rel="stylesheet" type="text/css" href="../css/General/style.css">
-
-    <style>
-        body {
-            background-image: url('https://www.istockphoto.com/es/foto/estudio-de-televisi%C3%B3n-fondo-con-luces-de-escenario-y-azul-gm495758354-78169473');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 5px;
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .button-container .button-wrapper {
-            margin: 0 5px;
-        }
-    </style>
 </head>
 
 <body>
     <div class="container">
-        <h1 class="text-center text-uppercase mb-3 mt-2">¡Bienvenido!</h1>
-        <h3 class="text-center text-uppercase mb-3 mt-2">¡Como Proveedor puede Modificar y Eliminar Proveedores y sus Productos, Incluido Listar las Ventas Totales hechas en el negocio!</h3>
-
+        <p class="text-center text-uppercase mb-3 mt-2">Registrar un Proveedor y Modificarlo</p>
         <div class="button-container">
             <div class="button-wrapper">
                 <a href="/CRUDs/ProveedorListar" class="btn btn-danger btn-info">Gestionar Proveedores</a>
             </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="text-center text-uppercase mb-3 mt-2">¡Bienvenido!</h1>
+        <h3 class="text-center text-uppercase mb-3 mt-2">Como Administrador puedes: </h3>
+        <div class="button-container">
+            <div class="button-wrapper">
+                <a href="/CRUDs/AdminListar" class="btn btn-info">Gestionar Administradores</a>
+            </div>
+        </div>
+        <p class="text-center text-uppercase mb-3 mt-2">Registrar o Modificar otros Administradores</p>
+        <span></span>
+        <div class="regresar">
+            <p><a href="/">Cerrar Sesion</a></p>
+        </div>
+    </div>
+    <div class="container">
+        <p class="text-center text-uppercase mb-3 mt-2">Opción implementada ya que el Usuario no se puede modificar a si mismo en este momento</p>
+        <div class="button-container">
             <div class="button-wrapper">
                 <a href="/CRUDs/UsuarioListar" class="btn btn-danger btn-info">Gestionar Usuario</a>
-            </div>
-            <div class="button-wrapper">
-                <a href="/CRUDs/ProductoListar" class="btn btn-info">Productos</a>
             </div>
         </div>
     </div>

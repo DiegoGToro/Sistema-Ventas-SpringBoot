@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 // Producto: Un producto representa un artículo que se vende en el local de tecnología. Tiene un nombre, una descripción, un precio de venta, una cantidad en stock y un proveedor.
