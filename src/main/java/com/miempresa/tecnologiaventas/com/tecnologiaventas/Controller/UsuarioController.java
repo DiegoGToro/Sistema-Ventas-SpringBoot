@@ -18,6 +18,14 @@ public class UsuarioController {
     @Autowired
     private InterfaceCRUD<Usuario> usuarioDao;
 
+    @GetMapping("CRUDs/UsuarioListar")
+    public String listar(Model model) {
+        model.addAttribute("titulo", "Listado de Usuarios");
+        model.addAttribute("usuario", usuarioDao.findAll());
+
+        return "CRUDs/UsuarioListar";
+    }
+
     @GetMapping("/InicioSesion/RegistrarUsuario")
     public String crear(Model model) {
         Usuario usuario = new Usuario();
@@ -36,6 +44,7 @@ public class UsuarioController {
         return "/InicioSesion/Login";
     }
 
+    //Falta implementar el Modificar con el correo ingresado por X Usuario
     @GetMapping("/InicioSesion/RegistrarUsuario/{id}")
     public String editar(@PathVariable(value = "id") Long id, Model model) {
         Usuario usuario = null;
@@ -51,5 +60,14 @@ public class UsuarioController {
         model.addAttribute("usuario", usuario);
         model.addAttribute("button", "Guardar Cambios");
         return "InicioSesion/RegistrarUsuario";
+    }
+
+    @GetMapping("/CRUDs/eliminarUsuario/{id}")
+    public String eliminar(@PathVariable(value = "id") Long id) {
+        if (id > 0)
+            usuarioDao.delete(id);
+        System.out.println("Ingrese al Eliminar Usuario " + id);
+
+        return "redirect:/CRUDs/UsuarioListar";
     }
 }
