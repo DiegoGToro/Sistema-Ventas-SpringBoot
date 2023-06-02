@@ -19,9 +19,9 @@
                 <caption></caption>
                 <thead>
                     <tr>
-                        <th style="text-align: center;">Fecha de fecha_emision</th>
+                        <th style="text-align: center;">Fecha de Emision</th>
                         <th style="text-align: center;">Fecha de Vencimiento</th>
-                        <th style="text-align: center;">Moneda/th>
+                        <th style="text-align: center;">Moneda </th>
                         <th style="text-align: center;">Tipo de cambio</th>
                         <th style="text-align: center;">Serie</th>
                         <th style="text-align: center;">Dni</th>
@@ -45,7 +45,7 @@
                         <td style="text-align: center;" th:text="${item.RazonSocial}"></td>
                         <td style="text-align: center;" th:text="${item.direccion_cliente}"></td>
                         <td style="text-align: center;" th:text="${item.direccion_departamento}"></td>
-                        <td style="text-align: center;" th:text="${item.direccion_distrito"></td>
+                        <td style="text-align: center;" th:text="${item.direccion_distrito"}></td>
                         <td style="text-align: center;" th:text="${item.direccion_provincia}"></td>
                         <td><a class="btn btn-primary btn-xs" th:href="@{/InicioSesion/ProveedorRegistrar/}+${item.proveedor.id}">Editar</a></td>
                         <td><a class="btn btn-danger btn-xs" th:href="@{/CRUDs/eliminarProveedor/}+${item.proveedor.id}" onclick="return confirm('Esta seguro de que quiere eliminar esta venta?')">Eliminar</a></td>
