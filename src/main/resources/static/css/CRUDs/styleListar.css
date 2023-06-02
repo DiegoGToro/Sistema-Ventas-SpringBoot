@@ -70,7 +70,7 @@ footer {
 
 
 .navbar {
-    background-color: #fc43003a;
+    background-color: #0b59be3a;
     padding: 10px;
 }
 
@@ -88,3 +88,7 @@ footer {
 a:hover {
     background-color: #ddd;
 }
+
+title {
+    font-family: "Helvetica", fallback;
+  }
