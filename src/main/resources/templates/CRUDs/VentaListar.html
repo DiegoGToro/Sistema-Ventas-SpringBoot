@@ -29,24 +29,22 @@
                         <th style="text-align: center;">Direccion</th>
                         <th style="text-align: center;">Departamento</th>
                         <th style="text-align: center;">Distrito</th>
-                        <th style="text-align: center;">Provincia</th>
                         <th style="text-align: center;">Editar</th>
                         <th style="text-align: center;">Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="item : ${Ventas}">
-                        <td style="text-align: center;" th:text="${item.fecha_emision}"></td>
-                        <td style="text-align: center;" th:text="${item.fecha_vencimiento}"></td>
-                        <td style="text-align: center;" th:text="${item.MonedaDes}"></td>
-                        <td style="text-align: center;" th:text="${item.TipoCambio}"></td>
-                        <td style="text-align: center;" th:text="${item.serie}"></td>
-                        <td style="text-align: center;" th:text="${item.Ruc}"></td>
-                        <td style="text-align: center;" th:text="${item.RazonSocial}"></td>
-                        <td style="text-align: center;" th:text="${item.direccion_cliente}"></td>
-                        <td style="text-align: center;" th:text="${item.direccion_departamento}"></td>
-                        <td style="text-align: center;" th:text="${item.direccion_distrito"}></td>
-                        <td style="text-align: center;" th:text="${item.direccion_provincia}"></td>
+                        <td style="text-align: center;" th:text="${venta.Fecha_Emision}"></td>
+                        <td style="text-align: center;" th:text="${venta.Fecha_Vencimiento}"></td>
+                        <td style="text-align: center;" th:text="${venta.Moneda}"></td>
+                        <td style="text-align: center;" th:text="${venta.Tipo_Cambio}"></td>
+                        <td style="text-align: center;" th:text="${venta.Serie}"></td>
+                        <td style="text-align: center;" th:text="${venta.Dni}"></td>
+                        <td style="text-align: center;" th:text="${venta.Razon}"></td>
+                        <td style="text-align: center;" th:text="${venta.Direccion}"></td>
+                        <td style="text-align: center;" th:text="${venta.Departamento}"></td>
+                        <td style="text-align: center;" th:text="${venta.Distrito"}></td>
                         <td><a class="btn btn-primary btn-xs" th:href="@{/InicioSesion/ProveedorRegistrar/}+${item.proveedor.id}">Editar</a></td>
                         <td><a class="btn btn-danger btn-xs" th:href="@{/CRUDs/eliminarProveedor/}+${item.proveedor.id}" onclick="return confirm('Esta seguro de que quiere eliminar esta venta?')">Eliminar</a></td>
                     </tr>
