@@ -93,4 +93,10 @@ public class DetalleOrden implements Serializable{
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
+
+    @Override
+    public String toString() {
+        return "DetalleOrden [Id=" + Id + ", Nombre=" + Nombre + ", Cantidad=" + Cantidad + ", Precio=" + Precio
+                + ", Total=" + Total + ", orden=" + orden + ", producto=" + producto + "]";
+    }
 }

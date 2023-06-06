@@ -5,26 +5,24 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Entity.Administrador;
+import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Entity.Usuario;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
 @Repository
-public class AdministradorDaoImp implements InterfaceCRUD<Administrador>{
+public class AdministradorDaoImp{
     @PersistenceContext
     private EntityManager em;
 
     @SuppressWarnings("unchecked")
     @Transactional(readOnly = true)
-    @Override
-    public List<Administrador> findAll() {
-        return em.createQuery("from Administrador").getResultList();
+    public List<Usuario> findAll() {
+        return em.createQuery("from Usuario where RolUsuario="+2+"").getResultList();
     }
 
-    @Override
     @Transactional
-    public void save(Administrador administrador) {
+    public void save(Usuario administrador) {
         System.out.println("----" + administrador.getId());
         if (administrador.getId() != null && administrador.getId() > 0) {
             em.merge(administrador);
@@ -34,16 +32,14 @@ public class AdministradorDaoImp implements InterfaceCRUD<Administrador>{
         }
     }
 
-    @Override
     @Transactional(readOnly = true)
-    public Administrador findOne(Long id) {
-        return em.find(Administrador.class, id);
+    public Usuario findOne(Long id) {
+        return em.find(Usuario.class, id);
     }
 
-    @Override
     @Transactional
     public void delete(Long id) {
-        Administrador administrador = findOne(id);
+        Usuario administrador = findOne(id);
         em.remove(administrador);
     }
 }

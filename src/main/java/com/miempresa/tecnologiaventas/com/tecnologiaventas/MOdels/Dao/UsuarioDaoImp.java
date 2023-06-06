@@ -20,7 +20,7 @@ public class UsuarioDaoImp implements InterfaceCRUD<Usuario> {
     @Transactional(readOnly = true)
     @Override
     public List<Usuario> findAll() {
-        return em.createQuery("from Usuario").getResultList();
+        return em.createQuery("from Usuario where RolUsuario="+1+"").getResultList();
     }
 
     @Override

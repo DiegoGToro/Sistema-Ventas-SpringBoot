@@ -37,7 +37,7 @@
                         <td style="text-align: center;" th:text="${item.telefono}"></td>
                         <td style="text-align: center;" th:text="${item.direccion}"></td>
                         <td style="text-align: center;" th:text="${item.ciudad}"></td>
-                        <td><a class="btn btn-primary btn-xs" th:href="@{/InicioSesion/ProveedorRegistrar/}+${item.proveedor.id}">Editar</a></td>
+                        <td><a class="btn btn-warning btn-xs" th:href="@{/InicioSesion/ProveedorRegistrar/}+${item.proveedor.id}">Editar</a></td>
                         <td><a class="btn btn-danger btn-xs" th:href="@{/CRUDs/eliminarProveedor/}+${item.proveedor.id}" onclick="return confirm('Esta seguro de que quiere eliminar el Proveedor?')">Eliminar</a></td>
                     </tr>
                 </tbody>

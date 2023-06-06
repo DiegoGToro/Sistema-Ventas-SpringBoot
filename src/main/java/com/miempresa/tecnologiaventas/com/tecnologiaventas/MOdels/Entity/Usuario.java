@@ -20,12 +20,14 @@ public class Usuario implements Serializable {
 
     private String Nombre, Apellido;
     private String Email, Password;
+    private byte RolUsuario;
     private Long Telefono;
 
     @OneToMany(mappedBy = "usuario")
     private List<Orden> ordenes;
 
     public Usuario() {
+        RolUsuario = 1;
     }
 
     public Usuario(Long id, String nombre, String apellido, String email, String password, Long telefono) {
@@ -34,6 +36,7 @@ public class Usuario implements Serializable {
         Apellido = apellido;
         Email = email;
         Password = password;
+        RolUsuario = 1;
         Telefono = telefono;
     }
 
@@ -83,5 +86,28 @@ public class Usuario implements Serializable {
 
     public void setTelefono(Long telefono) {
         Telefono = telefono;
+    }
+
+    public byte getRolUsuario() {
+        return RolUsuario;
+    }
+
+    public void setRolUsuario(byte rolUsuario) {
+        RolUsuario = rolUsuario;
+    }
+
+    public List<Orden> getOrdenes() {
+        return ordenes;
+    }
+
+    public void setOrdenes(List<Orden> ordenes) {
+        this.ordenes = ordenes;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario [Id=" + Id + ", Nombre=" + Nombre + ", Apellido=" + Apellido + ", Email=" + Email
+                + ", Password=" + Password + ", RolUsuario=" + RolUsuario + ", Telefono=" + Telefono + ", ordenes="
+                + ordenes + "]";
     }
 }

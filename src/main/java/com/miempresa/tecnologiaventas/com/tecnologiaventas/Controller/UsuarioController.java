@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Dao.InterfaceCRUD;
+import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Dao.UsuarioDaoImp;
 import com.miempresa.tecnologiaventas.com.tecnologiaventas.MOdels.Entity.Usuario;
 
 @Controller
 @SessionAttributes("usuario")
 public class UsuarioController {
     @Autowired
-    private InterfaceCRUD<Usuario> usuarioDao;
+    private UsuarioDaoImp usuarioDao;
 
     @GetMapping("CRUDs/UsuarioListar")
     public String listar(Model model) {

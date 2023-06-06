@@ -12,7 +12,6 @@
     <nav th:insert = "~{General/NavBar :: nav}"></nav>
 
     <h1 th:text="${titulo}" class="text-center text-uppercase mb-3 mt-2 border border-success border-start-0 border-end-0"></h1>
-    <a th:href="@{/General/Inicio}" class="btn btn-success">Regresar a Menu</a>
     
     <a th:href="@{/CRUDs/AdminForm}" class="btn btn-success ml-auto">Crear Administrador</a>
     <div class="d-flex justify-content-center">
@@ -25,7 +24,6 @@
                         <th style="text-align: center;">Nombre </th>
                         <th style="text-align: center;">Apellido</th>
                         <th style="text-align: center;">Email</th>
-                        <th style="text-align: center;">Password</th>
                         <th style="text-align: center;">Telefono</th>
                         <th style="text-align: center;">Editar</th>
                         <th style="text-align: center;">Eliminar</th>
@@ -37,9 +35,8 @@
                         <td style="text-align: center;" th:text="${administrador.nombre}"></td>
                         <td style="text-align: center;" th:text="${administrador.apellido}"></td>
                         <td style="text-align: center;" th:text="${administrador.email}"></td>
-                        <td style="text-align: center;" th:text="${administrador.password}"></td>
                         <td style="text-align: center;" th:text="${administrador.telefono}"></td>
-                        <td><a class="btn btn-primary btn-xs" th:href="@{/CRUDs/AdminForm/}+${administrador.id}">Editar</a></td>
+                        <td><a class="btn btn-warning btn-xs" th:href="@{/CRUDs/AdminForm/}+${administrador.id}">Editar</a></td>
                         <td><a class="btn btn-danger btn-xs" th:href="@{/CRUDs/eliminarAdministrador/}+${administrador.id}" onclick="return confirm('Esta seguro de que quiere eliminar el Administrador?')">Eliminar</a></td>
                     </tr>
                 </tbody>

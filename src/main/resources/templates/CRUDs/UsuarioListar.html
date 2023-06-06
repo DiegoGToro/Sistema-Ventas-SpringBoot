@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://thymeleaf.org">
 <head>
@@ -12,7 +19,6 @@
     <nav th:insert = "~{General/NavBar :: nav}"></nav>
     
     <h1 th:text="${titulo}" class="text-center text-uppercase mb-3 mt-2 border border-success border-start-0 border-end-0"></h1>
-    <a th:href="@{/General/Inicio}" class="btn btn-success">Regresar Al Menu</a>
     <div class="d-flex justify-content-center">
         <div class="col-8">
             <table>
@@ -23,7 +29,6 @@
                         <th style="text-align: center;">Nombre</th>
                         <th style="text-align: center;">Apellido</th>
                         <th style="text-align: center;">Email</th>
-                        <th style="text-align: center;">Password</th>
                         <th style="text-align: center;">Telefono</th>
                         <th style="text-align: center;">Eliminar</th>
                     </tr>
@@ -34,7 +39,6 @@
                         <td style="text-align: center;" th:text="${usuario.nombre}"></td>
                         <td style="text-align: center;" th:text="${usuario.apellido}"></td>
                         <td style="text-align: center;" th:text="${usuario.email}"></td>
-                        <td style="text-align: center;" th:text="${usuario.password}"></td>
                         <td style="text-align: center;" th:text="${usuario.telefono}"></td>
                         <td><a class="btn btn-danger btn-xs" th:href="@{/CRUDs/eliminarUsuario/}+${usuario.id}" onclick="return confirm('Esta seguro de que quiere eliminar el Usuario?')">Eliminar</a></td>
                     </tr>

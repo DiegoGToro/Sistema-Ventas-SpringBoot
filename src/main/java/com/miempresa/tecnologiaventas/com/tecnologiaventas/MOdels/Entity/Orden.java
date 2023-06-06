@@ -95,4 +95,10 @@ public class Orden implements Serializable {
     public void setDetalle(DetalleOrden detalle) {
         this.detalle = detalle;
     }
+
+    @Override
+    public String toString() {
+        return "Orden [Id=" + Id + ", Numero=" + Numero + ", fechaCreacion=" + fechaCreacion + ", fechaRecibido="
+                + fechaRecibido + ", Total=" + Total + ", usuario=" + usuario + ", detalle=" + detalle + "]";
+    }
 }

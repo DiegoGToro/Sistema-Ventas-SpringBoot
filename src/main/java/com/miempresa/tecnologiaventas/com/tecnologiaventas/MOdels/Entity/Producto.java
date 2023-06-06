@@ -81,4 +81,10 @@ public class Producto implements Serializable  {
     public void setProveedor(Proveedor proveedor) {
         this.proveedor = proveedor;
     }
+
+    @Override
+    public String toString() {
+        return "Producto [Id=" + Id + ", Nombre=" + Nombre + ", Descripcion=" + Descripcion + ", Precio=" + Precio
+                + ", Existencias=" + Existencias + ", proveedor=" + proveedor + "]";
+    }
 }
